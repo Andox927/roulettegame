@@ -1,0 +1,4 @@
+---
+applyTo: "**"
+excludeAgent: "code-review"
+---

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}後台登入{% endblock %}
+{% block body_class %}login-page{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="phone login">
+    <div class="title">後台登入</div>
+    <form method="post" class="login-form">
+      {% csrf_token %}
+      <label class="field-label">帳號</label>
+      <input class="input" type="text" name="username" placeholder="輸入帳號" required />
+      <label class="field-label">密碼</label>
+      <input class="input" type="password" name="password" placeholder="輸入密碼" required />
+      {% if form.errors %}
+        <div class="error">帳號或密碼錯誤</div>
+      {% endif %}
+      <button class="btn save" type="submit">登入</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

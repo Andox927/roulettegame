@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}後台設定{% endblock %}
+{% block body_class %}backend-page{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="phone backend">
+    <div class="header">
+      <div class="title">後台設定</div>
+      <div class="header-actions">
+        <a class="btn ghost" href="/">回到前台</a>
+        <a class="btn ghost" href="/logout/">登出</a>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="field-label accent">已存抽獎內容</label>
+      <div class="select-row">
+        <select id="backend-config" class="select wide">
+          {% for config in configs %}
+            <option value="{{ config.id }}" {% if selected and config.id == selected.id %}selected{% endif %}>{{ config.name }}</option>
+          {% endfor %}
+        </select>
+        <button id="load-config" class="btn teal" type="button">載入</button>
+      </div>
+    </div>
+
+    <div class="table-head">
+      <span>獎項名稱</span>
+      <span>機率</span>
+      <span>操作</span>
+    </div>
+
+    <form method="post" class="backend-form">
+      {% csrf_token %}
+      <input type="hidden" name="config_id" value="{{ selected.id|default:'' }}" />
+
+      <div id="prize-rows" class="prize-rows">
+        {% if prizes %}
+          {% for prize in prizes %}
+          <div class="row">
+            <input class="input" name="prize_name" value="{{ prize.name }}" placeholder="獎項名稱" />
+            <input class="input prob" name="prize_prob" value="{{ prize.probability }}" placeholder="%" />
+            <button class="btn-icon add" type="button">＋</button>
+            <button class="btn-icon remove" type="button">－</button>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="row">
+            <input class="input" name="prize_name" placeholder="獎項名稱" />
+            <input class="input prob" name="prize_prob" placeholder="%" />
+            <button class="btn-icon add" type="button">＋</button>
+            <button class="btn-icon remove" type="button">－</button>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="note">僅剩一格獎項時，僅顯示綠色＋</div>
+
+      <div class="field">
+        <label class="field-label">抽獎內容命名</label>
+        <input class="input" name="config_name" value="{{ selected.name|default:'' }}" placeholder="例：2026 春季活動" />
+      </div>
+
+      <button class="btn save" type="submit">存檔</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/backend.js"></script>
+{% endblock %}

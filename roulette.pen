@@ -1,0 +1,1207 @@
+{
+  "version": "2.7",
+  "children": [
+    {
+      "type": "frame",
+      "id": "7UwY3",
+      "x": 40,
+      "y": 960,
+      "name": "Frontend Mobile",
+      "reusable": true,
+      "width": 390,
+      "height": 844,
+      "fill": "#FFF3EC",
+      "cornerRadius": 20,
+      "stroke": {
+        "align": "inside",
+        "thickness": 1,
+        "fill": [
+          "#000000ff",
+          "#00000033"
+        ]
+      },
+      "layout": "none",
+      "children": [
+        {
+          "type": "frame",
+          "id": "dC3PZ",
+          "x": 20,
+          "y": 185,
+          "name": "WheelBack",
+          "width": 350,
+          "height": 350,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#5A3E1B",
+                "position": 0
+              },
+              {
+                "color": "#D2A45C",
+                "position": 0.55
+              },
+              {
+                "color": "#3B2A14",
+                "position": 1
+              }
+            ]
+          },
+          "cornerRadius": 175,
+          "stroke": {
+            "thickness": 2,
+            "fill": "#2A1A0B"
+          },
+          "effect": [
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#00000033",
+              "offset": {
+                "x": 0,
+                "y": 2
+              },
+              "blur": 6
+            },
+            {
+              "type": "shadow",
+              "shadowType": "outer",
+              "color": "#FFFFFF66",
+              "offset": {
+                "x": 0,
+                "y": -2
+              },
+              "blur": 4
+            }
+          ],
+          "layout": "none"
+        },
+        {
+          "type": "frame",
+          "id": "RzPxa",
+          "x": 30,
+          "y": 195,
+          "name": "WheelLace",
+          "width": 330,
+          "height": 330,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "radial",
+            "enabled": true,
+            "rotation": 0,
+            "size": {
+              "width": 1,
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#FFE9C6",
+                "position": 0
+              },
+              {
+                "color": "#F3C57A",
+                "position": 0.55
+              },
+              {
+                "color": "#C88B3A",
+                "position": 1
+              }
+            ]
+          },
+          "cornerRadius": 165,
+          "stroke": {
+            "thickness": 6,
+            "fill": "#8A5A23"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000033",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 3
+          },
+          "layout": "none"
+        },
+        {
+          "type": "text",
+          "id": "vuLGS",
+          "x": 20,
+          "y": 20,
+          "name": "fmTitle",
+          "fill": "#FF5A5F",
+          "content": "抽獎",
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "YCemK",
+          "x": 270,
+          "y": 22,
+          "name": "fmBtn",
+          "width": 100,
+          "height": 32,
+          "fill": "#FF5A5F",
+          "cornerRadius": 16,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "WwUAW",
+              "x": 18,
+              "y": 7,
+              "name": "fmBtnText",
+              "fill": "#FFFFFF",
+              "content": "新增抽獎",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "Gs21P",
+          "x": 20,
+          "y": 72,
+          "name": "fmDropLabel",
+          "fill": "#FF8A65",
+          "content": "抽獎名稱",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "ZE0g0",
+          "x": 238,
+          "y": 64,
+          "name": "fmDrop",
+          "width": 132,
+          "height": 36,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "WUSYZ",
+              "x": 12,
+              "y": 9,
+              "name": "fmDropText",
+              "fill": "#374151",
+              "content": "已存內容 ▾",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "bIdb3",
+          "x": 20,
+          "y": 110,
+          "name": "fmNickLabel",
+          "fill": "#FF8A65",
+          "content": "抽獎人暱稱",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "F29oy",
+          "x": 20,
+          "y": 128,
+          "name": "fmNick",
+          "width": 350,
+          "height": 36,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "IWoV2",
+              "x": 12,
+              "y": 9,
+              "name": "fmNickText",
+              "fill": "#9CA3AF",
+              "content": "輸入暱稱",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xsXUi",
+          "x": 45,
+          "y": 210,
+          "name": "fmWheel",
+          "clip": true,
+          "width": 300,
+          "height": 300,
+          "fill": "#FFFFFF",
+          "cornerRadius": 150,
+          "stroke": {
+            "thickness": 2,
+            "fill": "#5B3A14"
+          },
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#00000022",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 4
+          },
+          "layout": "none",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "MoDSP",
+              "x": 0,
+              "y": 0,
+              "name": "Slice01",
+              "startAngle": 270,
+              "sweepAngle": 30,
+              "fill": "#F59E0B",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "dopZh",
+              "x": 0,
+              "y": 0,
+              "name": "Slice02",
+              "startAngle": 300,
+              "sweepAngle": 30,
+              "fill": "#FDE047",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "IjwJy",
+              "x": 0,
+              "y": 0,
+              "name": "Slice03",
+              "startAngle": 330,
+              "sweepAngle": 30,
+              "fill": "#86EFAC",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "BxdM1",
+              "x": 0,
+              "y": 0,
+              "name": "Slice04",
+              "sweepAngle": 30,
+              "fill": "#22C55E",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "ZKE52",
+              "x": 0,
+              "y": 0,
+              "name": "Slice05",
+              "startAngle": 30,
+              "sweepAngle": 30,
+              "fill": "#A7F3D0",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "j0l4y",
+              "x": 0,
+              "y": 0,
+              "name": "Slice06",
+              "startAngle": 60,
+              "sweepAngle": 30,
+              "fill": "#FCD34D",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "fKtS1",
+              "x": 0,
+              "y": 0,
+              "name": "Slice07",
+              "startAngle": 90,
+              "sweepAngle": 30,
+              "fill": "#FDBA74",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "w6bKZ",
+              "x": 0,
+              "y": 0,
+              "name": "Slice08",
+              "startAngle": 120,
+              "sweepAngle": 30,
+              "fill": "#F97316",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "HOD6s",
+              "x": 0,
+              "y": 0,
+              "name": "Slice09",
+              "startAngle": 150,
+              "sweepAngle": 30,
+              "fill": "#FCA5A5",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "3QQr6",
+              "x": 0,
+              "y": 0,
+              "name": "Slice10",
+              "startAngle": 180,
+              "sweepAngle": 30,
+              "fill": "#FB7185",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "i6N7d",
+              "x": 0,
+              "y": 0,
+              "name": "Slice11",
+              "startAngle": 210,
+              "sweepAngle": 30,
+              "fill": "#FBBF24",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "ellipse",
+              "id": "aE7Ak",
+              "x": 0,
+              "y": 0,
+              "name": "Slice12",
+              "startAngle": 240,
+              "sweepAngle": 30,
+              "fill": "#4ADE80",
+              "width": 300,
+              "height": 300
+            },
+            {
+              "type": "text",
+              "id": "4PTNh",
+              "x": 175,
+              "y": 40,
+              "name": "t1",
+              "fill": "#1F2937",
+              "content": "特獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "S6fv5",
+              "x": 230,
+              "y": 65,
+              "name": "t2",
+              "fill": "#1F2937",
+              "content": "一獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "dJjRI",
+              "x": 250,
+              "y": 115,
+              "name": "t3",
+              "fill": "#1F2937",
+              "content": "二獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "l13HD",
+              "x": 250,
+              "y": 175,
+              "name": "t4",
+              "fill": "#1F2937",
+              "content": "三獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "z4r8h",
+              "x": 220,
+              "y": 225,
+              "name": "t5",
+              "fill": "#1F2937",
+              "content": "四獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "hB1B4",
+              "x": 175,
+              "y": 255,
+              "name": "t6",
+              "fill": "#1F2937",
+              "content": "五獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "bviYp",
+              "x": 115,
+              "y": 255,
+              "name": "t7",
+              "fill": "#1F2937",
+              "content": "六獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Al3HY",
+              "x": 65,
+              "y": 225,
+              "name": "t8",
+              "fill": "#1F2937",
+              "content": "七獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Lbgy5",
+              "x": 35,
+              "y": 175,
+              "name": "t9",
+              "fill": "#1F2937",
+              "content": "八獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "NIEly",
+              "x": 35,
+              "y": 115,
+              "name": "t10",
+              "fill": "#1F2937",
+              "content": "九獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "FQhPS",
+              "x": 60,
+              "y": 65,
+              "name": "t11",
+              "fill": "#1F2937",
+              "content": "十獎",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "dlXh3",
+              "x": 110,
+              "y": 40,
+              "name": "t12",
+              "fill": "#1F2937",
+              "content": "參加",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "ellipse",
+              "id": "HkwCb",
+              "x": 108,
+              "y": 112,
+              "name": "BadgeShadow",
+              "fill": "#7F1D1D",
+              "width": 84,
+              "height": 84
+            },
+            {
+              "type": "ellipse",
+              "id": "6mwE7",
+              "x": 105,
+              "y": 108,
+              "name": "Badge",
+              "fill": {
+                "type": "gradient",
+                "gradientType": "radial",
+                "enabled": true,
+                "rotation": 0,
+                "size": {
+                  "width": 1,
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#FF7A7A",
+                    "position": 0
+                  },
+                  {
+                    "color": "#DC2626",
+                    "position": 1
+                  }
+                ],
+                "center": {
+                  "x": 0.35,
+                  "y": 0.35
+                }
+              },
+              "width": 84,
+              "height": 84,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#7F1D1D80",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 4
+              }
+            },
+            {
+              "type": "ellipse",
+              "id": "r9SCS",
+              "x": 118,
+              "y": 120,
+              "name": "BadgeHighlight",
+              "opacity": 0.5,
+              "fill": "#FCA5A5",
+              "width": 58,
+              "height": 58
+            },
+            {
+              "type": "text",
+              "id": "tbGXY",
+              "x": 120,
+              "y": 128,
+              "name": "badgeText",
+              "fill": "#FFFFFF",
+              "textGrowth": "fixed-width-height",
+              "width": 60,
+              "height": 40,
+              "content": "抽獎\n轉盤",
+              "textAlign": "center",
+              "textAlignVertical": "middle",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "polygon",
+              "polygonCount": 3,
+              "id": "CBP4U",
+              "x": 156,
+              "y": 20,
+              "name": "WinPointer",
+              "rotation": 180,
+              "fill": "#B91C1C",
+              "width": 12,
+              "height": 40,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#7F1D1D"
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rYpai",
+          "x": 20,
+          "y": 560,
+          "name": "fmRec",
+          "width": 350,
+          "height": 240,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "oLeyZ",
+              "x": 14,
+              "y": 12,
+              "name": "fmRecTitle",
+              "fill": "#FF5A5F",
+              "content": "中獎紀錄 (新→舊)",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Y8BdP",
+              "x": 14,
+              "y": 42,
+              "name": "fmRec1",
+              "fill": "#374151",
+              "content": "14:23  獎項A  (小明)",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "X7rdi",
+              "x": 14,
+              "y": 66,
+              "name": "fmRec2",
+              "fill": "#374151",
+              "content": "14:18  獎項C  (阿芳)",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "YG2dE",
+              "x": 14,
+              "y": 90,
+              "name": "fmRec3",
+              "fill": "#374151",
+              "content": "14:10  獎項B  (KJ)",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GoG03",
+          "x": 110,
+          "y": 64,
+          "name": "DrawNameInput",
+          "width": 120,
+          "height": 36,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "WYsXt",
+              "x": 10,
+              "y": 9,
+              "name": "nameInputText",
+              "fill": "#9CA3AF",
+              "content": "輸入名稱",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ehc96",
+          "x": 95,
+          "y": 94,
+          "name": "fmModal",
+          "width": 200,
+          "height": 80,
+          "fill": "#FFF4B8",
+          "cornerRadius": 12,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "Zu9u5",
+              "x": 14,
+              "y": 10,
+              "name": "fmModalTitle",
+              "fill": "#B45309",
+              "content": "恭喜中獎！",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "Qxq35",
+              "x": 14,
+              "y": 40,
+              "name": "fmModalBody",
+              "fill": "#9A3412",
+              "content": "點一下即可關閉",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "ellipse",
+          "id": "ouq98",
+          "x": 41,
+          "y": 206,
+          "name": "MetalHighlight",
+          "innerRadius": 0.92,
+          "fill": {
+            "type": "gradient",
+            "gradientType": "linear",
+            "enabled": true,
+            "rotation": 45,
+            "size": {
+              "height": 1
+            },
+            "colors": [
+              {
+                "color": "#FFFFFF88",
+                "position": 0
+              },
+              {
+                "color": "#FFFFFF00",
+                "position": 0.6
+              },
+              {
+                "color": "#FFFFFF00",
+                "position": 1
+              }
+            ]
+          },
+          "width": 308,
+          "height": 308
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "cF5T3",
+      "x": 460,
+      "y": 960,
+      "name": "Backend Mobile",
+      "reusable": true,
+      "width": 390,
+      "height": 844,
+      "fill": "#F2FBFF",
+      "cornerRadius": 20,
+      "layout": "none",
+      "children": [
+        {
+          "type": "text",
+          "id": "rMu4e",
+          "x": 20,
+          "y": 20,
+          "name": "bmTitle",
+          "fill": "#0F172A",
+          "content": "後台設定",
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "MTdK7",
+          "x": 30,
+          "y": 136,
+          "name": "bmHead1",
+          "fill": "#6B7280",
+          "content": "獎項名稱",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "V1DGd",
+          "x": 240,
+          "y": 136,
+          "name": "bmHead2",
+          "fill": "#6B7280",
+          "content": "機率",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "urT9h",
+          "x": 310,
+          "y": 136,
+          "name": "bmHead3",
+          "fill": "#6B7280",
+          "content": "操作",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "krNcj",
+          "x": 20,
+          "y": 156,
+          "name": "row1",
+          "width": 350,
+          "height": 52,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "y5lRu",
+              "x": 10,
+              "y": 10,
+              "name": "row1Name",
+              "width": 190,
+              "height": 32,
+              "fill": "#F0F9FF",
+              "cornerRadius": 6,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "mrer2",
+                  "x": 8,
+                  "y": 7,
+                  "name": "row1NameText",
+                  "fill": "#374151",
+                  "content": "特獎",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "smSs0",
+              "x": 210,
+              "y": 10,
+              "name": "row1Prob",
+              "width": 50,
+              "height": 32,
+              "fill": "#FFF7ED",
+              "cornerRadius": 6,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "NnduK",
+                  "x": 14,
+                  "y": 7,
+                  "name": "row1ProbText",
+                  "fill": "#374151",
+                  "content": "30",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "7zkRN",
+              "x": 278,
+              "y": 8,
+              "name": "row1Plus",
+              "fill": "#22C55E",
+              "content": "＋",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "LIrG5",
+              "x": 315,
+              "y": 8,
+              "name": "row1Minus",
+              "fill": "#F43F5E",
+              "content": "−",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MJ3YC",
+          "x": 20,
+          "y": 216,
+          "name": "row2",
+          "width": 350,
+          "height": 52,
+          "fill": "#FFFFFF",
+          "cornerRadius": 12,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ve1h8",
+              "x": 10,
+              "y": 10,
+              "name": "row2Name",
+              "width": 190,
+              "height": 32,
+              "fill": "#F0F9FF",
+              "cornerRadius": 6,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ygEz5",
+                  "x": 8,
+                  "y": 7,
+                  "name": "row2NameText",
+                  "fill": "#374151",
+                  "content": "參加獎",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "CM3qg",
+              "x": 210,
+              "y": 10,
+              "name": "row2Prob",
+              "width": 50,
+              "height": 32,
+              "fill": "#FFF7ED",
+              "cornerRadius": 6,
+              "layout": "none",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "VIOv0",
+                  "x": 14,
+                  "y": 7,
+                  "name": "row2ProbText",
+                  "fill": "#374151",
+                  "content": "10",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "BDMHh",
+              "x": 278,
+              "y": 8,
+              "name": "row2Plus",
+              "fill": "#22C55E",
+              "content": "＋",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "zupaS",
+              "x": 315,
+              "y": 8,
+              "name": "row2Minus",
+              "fill": "#F43F5E",
+              "content": "−",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "HyD87",
+          "x": 20,
+          "y": 278,
+          "name": "bmNote",
+          "fill": "#FF8A65",
+          "content": "僅剩一格獎項時，僅顯示綠色＋",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "CV6LG",
+          "x": 20,
+          "y": 308,
+          "name": "nameLabel",
+          "fill": "#0F172A",
+          "content": "抽獎內容命名",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "lN2Js",
+          "x": 20,
+          "y": 330,
+          "name": "nameInput",
+          "width": 350,
+          "height": 38,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "SWxwx",
+              "x": 12,
+              "y": 10,
+              "name": "nameInputText",
+              "fill": "#9CA3AF",
+              "content": "例：2026 春季活動",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "rav94",
+          "x": 20,
+          "y": 382,
+          "name": "saveBtn",
+          "width": 350,
+          "height": 40,
+          "fill": "#4D96FF",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "Ay5pI",
+              "x": 154,
+              "y": 10,
+              "name": "saveBtnText",
+              "fill": "#FFFFFF",
+              "content": "存檔",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "202FR",
+          "x": 20,
+          "y": 60,
+          "name": "selLabel",
+          "fill": "#2EC4B6",
+          "content": "已存抽獎內容",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "HdBD3",
+          "x": 20,
+          "y": 78,
+          "name": "selDrop",
+          "width": 250,
+          "height": 36,
+          "fill": "#FFFFFF",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "LV3A0",
+              "x": 12,
+              "y": 9,
+              "name": "selDropText",
+              "fill": "#374151",
+              "content": "選擇抽獎內容 ▾",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "tWxbY",
+          "x": 280,
+          "y": 78,
+          "name": "loadBtn",
+          "width": 90,
+          "height": 36,
+          "fill": "#2EC4B6",
+          "cornerRadius": 10,
+          "layout": "none",
+          "children": [
+            {
+              "type": "text",
+              "id": "NFTqI",
+              "x": 28,
+              "y": 9,
+              "name": "loadBtnText",
+              "fill": "#FFFFFF",
+              "content": "載入",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

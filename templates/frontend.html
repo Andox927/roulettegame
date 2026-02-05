@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}抽獎轉盤{% endblock %}
+{% block body_class %}frontend-page{% endblock %}
+
+{% block content %}
+<div class="page">
+  <div class="phone">
+    <div class="header">
+      <div class="title">抽獎</div>
+      <a class="btn primary" href="/backend/">新增抽獎</a>
+    </div>
+
+    <div class="field-row">
+      <label class="field-label">抽獎名稱</label>
+      <input id="draw-name" class="input" type="text" placeholder="輸入名稱" value="{{ selected.name|default:'' }}" />
+      <select id="config-select" class="select" {% if not configs %}disabled{% endif %}>
+        {% for config in configs %}
+          <option value="{{ config.id }}" {% if selected and config.id == selected.id %}selected{% endif %}>{{ config.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label class="field-label">抽獎人暱稱</label>
+      <input id="nickname" class="input" type="text" placeholder="輸入暱稱" />
+    </div>
+
+    <div class="wheel-section">
+      <div class="wheel-frame">
+        <div class="wheel-metal"></div>
+        <div class="wheel-lace"></div>
+        <div id="wheel-rotator" class="wheel-rotator" data-config-id="{{ selected.id|default:'' }}">
+          <div id="wheel" class="wheel" style="background: {{ wheel_gradient }};"></div>
+          <ul class="wheel-labels">
+            {% for label in labels %}
+              <li style="--angle: {{ label.angle }}deg;">{{ label.name }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <button id="spin-btn" class="wheel-center" type="button"><span class="wheel-center-text">點我抽獎</span></button>
+        <div class="pointer"></div>
+      </div>
+      {% if not configs %}
+        <div class="muted" style="text-align:center; margin-top: 8px;">請先到後台設定抽獎內容</div>
+      {% endif %}
+    </div>
+
+    <div id="win-modal" class="modal">
+      <div class="modal-card">
+        <div class="modal-title">恭喜中獎！</div>
+        <div class="modal-body">點一下即可關閉</div>
+      </div>
+    </div>
+
+    <div class="history">
+      <div class="history-title">中獎紀錄 (新→舊)</div>
+      <ul id="history-list">
+        {% for item in history %}
+          <li>{{ item.created_at|date:"H:i" }}  {{ item.prize_name }} ({{ item.nickname }})</li>
+        {% empty %}
+          <li class="muted">尚無中獎紀錄</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/frontend.js"></script>
+{% endblock %}
