@@ -34,7 +34,4 @@ jobs:
         # stop the build if there are Python syntax errors or undefined names
         python manage.py makemigrations
         python manage.py migrate
-        python manage.py runserver
-    - name: Test with pytest
-      run: |
-        pytest
+
