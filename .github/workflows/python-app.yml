@@ -1,37 +1,59 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Python application
+name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main", "master"]
   pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+    branches: ["main", "master"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout
+      uses: actions/checkout@v4    
+
     - name: Set up Python 3.12
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: "3.12"
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install django pytest
+        pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        
+        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+  
+    - name: Sanity check Django config
+      run: |
+        python -m django --version
+        python manage.py check
+  
+    - name: Migrate database
+      run: |
+        python manage.py migrate --noinput
+      
     - name: Lint with django
       run: |
         # stop the build if there are Python syntax errors or undefined names
         python manage.py makemigrations
         python manage.py migrate
+    - name: Migrate database
+      run: |
+        python manage.py migrate --noinput
 
+    - name: Run tests
+      run: |
+        pytest -q
+
+    # ✅ 可選：啟動服務做健康檢查（需要你專案有 /health/ 或首頁可 200）
+    - name: Start server & healthcheck (optional)
+      run: |
+        python manage.py runserver 0.0.0.0:8000 &
+        sleep 3
+        curl -fsS http://127.0.0.1:8000/ || (echo "Healthcheck failed" && exit 1)
+      continue-on-error: true  
