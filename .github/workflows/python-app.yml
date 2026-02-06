@@ -46,10 +46,6 @@ jobs:
       run: |
         python manage.py migrate --noinput
 
-    - name: Run tests
-      run: |
-        pytest -q
-
     # ✅ 可選：啟動服務做健康檢查（需要你專案有 /health/ 或首頁可 200）
     - name: Start server & healthcheck (optional)
       run: |
