@@ -6,7 +6,9 @@ from django.http import JsonResponse, HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_POST
 
-from .models import DrawHistory, Prize, RouletteConfig
+from .models import DrawHistory, Prize, RouletteConfig, AwardList, AwardHistory
+
+ANGLE_OFFSET = -90.0
 
 PALETTE = [
     '#F59E0B',
@@ -48,8 +50,31 @@ def build_segments(prizes: List[Prize]) -> Tuple[str, List[dict], List[dict]]:
         start = end
         color_idx += 1
 
-    gradient = "conic-gradient(from -90deg, " + ", ".join(gradient_parts) + ")"
-    labels = [{'name': s['prize'].name, 'angle': s['mid']} for s in segments]
+    gradient = f"conic-gradient(from {ANGLE_OFFSET}deg, " + ", ".join(gradient_parts) + ")"
+    labels = []
+    for s in segments:
+        angle = s['end'] - s['start']
+        name = s['prize'].name
+        length = max(1, len(name))
+        if angle >= 40:
+            base = 14
+            radius = 104
+        elif angle >= 25:
+            base = 12
+            radius = 96
+        else:
+            base = 10
+            radius = 88
+        size = max(9, base - max(0, length - 4))
+        radius = max(78, radius - max(0, length - 4) * 4)
+        display_angle = (s['mid'] + ANGLE_OFFSET) % 360
+        labels.append({
+            'name': name,
+            'chars': list(name),
+            'angle': display_angle,
+            'font_size': size,
+            'radius': radius,
+        })
     return gradient, labels, segments
 
 
@@ -64,7 +89,9 @@ def frontend(request: HttpRequest) -> HttpResponse:
 
     prizes = list(selected.prizes.all()) if selected else []
     wheel_gradient, labels, _ = build_segments(prizes)
-    history = list(DrawHistory.objects.filter(config=selected)[:10]) if selected else []
+    if selected:
+        DrawHistory.objects.filter(config=selected).delete()
+    history = list(DrawHistory.objects.filter(config=selected)[:50]) if selected else []
 
     context = {
         'configs': configs,
@@ -116,10 +143,21 @@ def backend(request: HttpRequest) -> HttpResponse:
         return redirect(f'/backend/?config={config.id}')
 
     prizes = list(selected.prizes.all()) if selected else []
+    activity_list = list(AwardList.objects.all())
+    activity_name = request.GET.get('activity')
+    activity_detail = None
+    activity_history = []
+    if activity_name:
+        activity_detail = AwardList.objects.filter(activity_name=activity_name).first()
+        if activity_detail:
+            activity_history = list(AwardHistory.objects.filter(activity=activity_detail))
     context = {
         'configs': configs,
         'selected': selected,
         'prizes': prizes,
+        'activity_list': activity_list,
+        'activity_detail': activity_detail,
+        'activity_history': activity_history,
     }
     return render(request, 'backend.html', context)
 
@@ -156,7 +194,7 @@ def api_draw(request: HttpRequest) -> JsonResponse:
         prize_name=selected['prize'].name,
     )
 
-    history = list(DrawHistory.objects.filter(config=config)[:10])
+    history = list(DrawHistory.objects.filter(config=config)[:50])
     history_payload = [
         {
             'time': h.created_at.astimezone().strftime('%H:%M'),
@@ -166,9 +204,65 @@ def api_draw(request: HttpRequest) -> JsonResponse:
         for h in history
     ]
 
+    start_angle = selected['start']
+    end_angle = selected['end']
+    span = max(0.0, end_angle - start_angle)
+    pad = min(2.0, span * 0.2)
+    if pad * 2 >= span:
+        pad = 0.0
+    landed_angle = random.uniform(start_angle + pad, end_angle - pad) if span > 0 else 0.0
+
     return JsonResponse({
         'success': True,
         'prize': selected['prize'].name,
-        'target_angle': round(selected['mid'], 2),
+        'target_angle': round((landed_angle + ANGLE_OFFSET) % 360, 2),
         'history': history_payload,
     })
+
+
+@login_required
+@require_POST
+def api_new_activity(request: HttpRequest) -> JsonResponse:
+    activity_name = (request.POST.get('activity_name') or '').strip()
+    config_id = request.POST.get('config_id')
+    if not activity_name:
+        return JsonResponse({'success': False, 'message': '請輸入活動名稱'})
+
+    config = RouletteConfig.objects.filter(id=config_id).first()
+    if not config:
+        return JsonResponse({'success': False, 'message': '找不到抽獎內容'})
+
+    if AwardList.objects.filter(activity_name=activity_name).exists():
+        return JsonResponse({'success': False, 'message': '活動名稱已存在，請更換名稱'})
+
+    activity = AwardList.objects.create(activity_name=activity_name, config=config)
+    draws = list(DrawHistory.objects.filter(config=config))
+    histories = [
+        AwardHistory(
+            activity=activity,
+            nickname=draw.nickname,
+            prize_name=draw.prize_name,
+            drawn_at=draw.created_at,
+        )
+        for draw in draws
+    ]
+    if histories:
+        AwardHistory.objects.bulk_create(histories)
+    DrawHistory.objects.filter(config=config).delete()
+
+    return JsonResponse({'success': True})
+
+
+@login_required
+@require_POST
+def api_delete_activity(request: HttpRequest) -> JsonResponse:
+    activity_name = (request.POST.get('activity_name') or '').strip()
+    if not activity_name:
+        return JsonResponse({'success': False, 'message': '缺少活動名稱'})
+
+    activity = AwardList.objects.filter(activity_name=activity_name).first()
+    if not activity:
+        return JsonResponse({'success': False, 'message': '找不到活動'})
+
+    activity.delete()
+    return JsonResponse({'success': True})

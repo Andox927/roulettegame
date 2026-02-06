@@ -65,6 +65,36 @@
 
       <button class="btn save" type="submit">存檔</button>
     </form>
+
+    <div class="history-block">
+      <button id="history-toggle" class="btn ghost" type="button">讀取抽獎歷史</button>
+      <ul id="activity-list" class="activity-list hidden">
+        {% for activity in activity_list %}
+          <li>
+            <a href="/backend/?activity={{ activity.activity_name }}">{{ activity.activity_name }}</a>
+            <span class="activity-actions">
+              <span class="muted">{{ activity.created_at|date:"Y-m-d" }}</span>
+              <button class="icon-trash" type="button" data-activity="{{ activity.activity_name }}" aria-label="刪除">🗑</button>
+            </span>
+          </li>
+        {% empty %}
+          <li class="muted">尚無歷史</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% if activity_detail %}
+      <div id="history-detail" class="history-detail" data-activity="{{ activity_detail.activity_name }}">
+        <div class="history-title">活動：{{ activity_detail.activity_name }}</div>
+        <ul class="history-list">
+          {% for item in activity_history %}
+            <li>{{ item.drawn_at|date:"H:i" }}  {{ item.nickname }} - {{ item.prize_name }}</li>
+          {% empty %}
+            <li class="muted">尚無紀錄</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

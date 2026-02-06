@@ -1,6 +1,14 @@
 const rowsContainer = document.getElementById('prize-rows');
 const loadBtn = document.getElementById('load-config');
 const backendSelect = document.getElementById('backend-config');
+const historyToggle = document.getElementById('history-toggle');
+const activityList = document.getElementById('activity-list');
+const historyDetail = document.getElementById('history-detail');
+
+function getCsrfToken() {
+  const token = document.querySelector('meta[name="csrf-token"]');
+  return token ? token.content : '';
+}
 
 function updateRemoveButtons() {
   if (!rowsContainer) return;
@@ -50,6 +58,51 @@ if (loadBtn && backendSelect) {
     const value = backendSelect.value;
     if (value) {
       window.location.href = `/backend/?config=${value}`;
+    }
+  });
+}
+
+if (historyToggle && activityList) {
+  historyToggle.addEventListener('click', () => {
+    activityList.classList.toggle('hidden');
+    if (historyDetail) {
+      historyDetail.classList.add('hidden');
+    }
+  });
+}
+
+if (activityList) {
+  activityList.addEventListener('click', async (event) => {
+    const target = event.target;
+    if (!target.classList.contains('icon-trash')) return;
+    const activityName = target.dataset.activity;
+    if (!activityName) return;
+    if (!confirm(`確定刪除活動「${activityName}」？`)) return;
+
+    const payload = new URLSearchParams();
+    payload.append('activity_name', activityName);
+
+    try {
+      const response = await fetch('/api/delete-activity/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-CSRFToken': getCsrfToken(),
+        },
+        body: payload.toString(),
+      });
+      const data = await response.json();
+      if (!data.success) {
+        alert(data.message || '刪除失敗');
+        return;
+      }
+      const li = target.closest('li');
+      if (li) li.remove();
+      if (historyDetail && historyDetail.dataset.activity === activityName) {
+        historyDetail.classList.add('hidden');
+      }
+    } catch (err) {
+      alert('刪除失敗，請稍後再試');
     }
   });
 }

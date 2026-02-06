@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import RouletteConfig, Prize, DrawHistory
+from .models import RouletteConfig, Prize, DrawHistory, AwardList, AwardHistory
 
 
 class PrizeInline(admin.TabularInline):
@@ -17,6 +17,18 @@ class RouletteConfigAdmin(admin.ModelAdmin):
 class DrawHistoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'config', 'nickname', 'prize_name', 'created_at')
     list_filter = ('config',)
+
+
+@admin.register(AwardList)
+class AwardListAdmin(admin.ModelAdmin):
+    list_display = ('activity_name', 'config', 'created_at')
+    list_filter = ('config',)
+
+
+@admin.register(AwardHistory)
+class AwardHistoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'activity', 'nickname', 'prize_name', 'drawn_at')
+    list_filter = ('activity',)
 
 
 @admin.register(Prize)

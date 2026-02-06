@@ -34,3 +34,28 @@ class DrawHistory(models.Model):
 
     def __str__(self) -> str:
         return f"{self.nickname} - {self.prize_name}"
+
+
+class AwardList(models.Model):
+    activity_name = models.CharField(max_length=100, primary_key=True)
+    config = models.ForeignKey(RouletteConfig, related_name='activities', on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self) -> str:
+        return self.activity_name
+
+
+class AwardHistory(models.Model):
+    activity = models.ForeignKey(AwardList, related_name='histories', on_delete=models.CASCADE)
+    nickname = models.CharField(max_length=100)
+    prize_name = models.CharField(max_length=100)
+    drawn_at = models.DateTimeField()
+
+    class Meta:
+        ordering = ['-drawn_at']
+
+    def __str__(self) -> str:
+        return f"{self.activity_id} - {self.nickname} - {self.prize_name}"

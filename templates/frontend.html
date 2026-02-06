@@ -8,12 +8,15 @@
   <div class="phone">
     <div class="header">
       <div class="title">抽獎</div>
-      <a class="btn primary" href="/backend/">新增抽獎</a>
+      <div class="header-actions">
+        <button id="new-activity" class="btn primary" type="button">新增抽獎</button>
+        <a class="btn icon" href="/backend/" aria-label="後台">&#9881;</a>
+      </div>
     </div>
 
     <div class="field-row">
-      <label class="field-label">抽獎名稱</label>
-      <input id="draw-name" class="input" type="text" placeholder="輸入名稱" value="{{ selected.name|default:'' }}" />
+      <label class="field-label">活動</label>
+      <input id="draw-name" class="input" type="text" placeholder="輸入名稱" value="" />
       <select id="config-select" class="select" {% if not configs %}disabled{% endif %}>
         {% for config in configs %}
           <option value="{{ config.id }}" {% if selected and config.id == selected.id %}selected{% endif %}>{{ config.name }}</option>
@@ -32,11 +35,15 @@
         <div class="wheel-lace"></div>
         <div id="wheel-rotator" class="wheel-rotator" data-config-id="{{ selected.id|default:'' }}">
           <div id="wheel" class="wheel" style="background: {{ wheel_gradient }};"></div>
-          <ul class="wheel-labels">
-            {% for label in labels %}
-              <li style="--angle: {{ label.angle }}deg;">{{ label.name }}</li>
-            {% endfor %}
-          </ul>
+        <ul class="wheel-labels">
+          {% for label in labels %}
+            <li style="--angle: {{ label.angle }}deg; --radius: {{ label.radius }}px; font-size: {{ label.font_size }}px;">
+              {% for ch in label.chars %}
+                <span>{{ ch }}</span>
+              {% endfor %}
+            </li>
+          {% endfor %}
+        </ul>
         </div>
         <button id="spin-btn" class="wheel-center" type="button"><span class="wheel-center-text">點我抽獎</span></button>
         <div class="pointer"></div>
@@ -55,7 +62,7 @@
 
     <div class="history">
       <div class="history-title">中獎紀錄 (新→舊)</div>
-      <ul id="history-list">
+      <ul id="history-list" class="history-list">
         {% for item in history %}
           <li>{{ item.created_at|date:"H:i" }}  {{ item.prize_name }} ({{ item.nickname }})</li>
         {% empty %}
