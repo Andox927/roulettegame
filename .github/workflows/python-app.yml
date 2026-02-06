@@ -32,7 +32,7 @@ jobs:
     - name: Lint with django
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        python manage.py makemifrations
+        python manage.py makemigrations
         python manage.py migrate
         python manage.py runserver
     - name: Test with pytest
