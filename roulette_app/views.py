@@ -1,6 +1,7 @@
 import random
 from typing import List, Tuple
 
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
@@ -266,3 +267,9 @@ def api_delete_activity(request: HttpRequest) -> JsonResponse:
 
     activity.delete()
     return JsonResponse({'success': True})
+
+
+@require_POST
+def logout_view(request: HttpRequest) -> HttpResponse:
+    logout(request)
+    return redirect('/')
